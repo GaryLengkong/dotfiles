@@ -120,6 +120,8 @@ nnoremap K :Ag "\b<C-R><C-W>\b"<CR>:cw<CR>
 set tabstop=2
 set shiftwidth=2
 set expandtab
+map <ScrollWheelUp> <C-Y>
+map <ScrollWheelDown> <C-E>
 
 let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec}\n")'
 let g:mocha_js_command = 'call Send_to_Tmux("$(npm bin)/mocha --opts spec/javascripts/mocha.opts {spec}\n")'
@@ -206,10 +208,10 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 nnoremap <leader><leader> <c-^>
 
 " Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+"nnoremap <Left> :echoe "Use h"<CR>
+"nnoremap <Right> :echoe "Use l"<CR>
+"nnoremap <Up> :echoe "Use k"<CR>
+"nnoremap <Down> :echoe "Use j"<CR>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -217,12 +219,6 @@ let g:html_indent_tags = 'li\|p'
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
-
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_ruby_checkers = ['mri']
