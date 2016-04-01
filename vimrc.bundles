@@ -48,6 +48,7 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'jsx/jsx.vim'
 Bundle 'terryma/vim-expand-region'
 Bundle 'easymotion/vim-easymotion'
+Bundle 'HerringtonDarkholme/yats'
 
 
 filetype on
