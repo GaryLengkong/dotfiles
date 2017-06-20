@@ -15,17 +15,19 @@
   st = status
   up = !git fetch origin && git rebase origin/master
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/lengkong/.gitignore
   autocrlf = input
+  mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
 [merge]
   ff = only
+	tool = p4mergetool
 [include]
   path = .gitconfig.local
 [commit]
 	template = /Users/lengkong/.gitmessage
 [user]
-  name = Gary Lengkong
-  email = gary.lengkong@gmail.com
+	name = Gary Lengkong
+	email = G.Lengkong@F5.com
 [diff]
     tool = Kaleidoscope
 [difftool "Kaleidoscope"]
@@ -34,10 +36,10 @@
   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
   trustExitCode = true
 [difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
 [mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	cmd = /Users/lengkong/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [credential]
 
@@ -47,3 +49,18 @@ protocol = https
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[branch]
+	autosetuprebase = never
+[pull]
+	rebase = false
+[mergetool "p4mergetool"]
+	trustExitCode = false
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
+[mergetool]
+	keepBackup = false
+[fetch]
+	prune = true
+[log]
+	abbrevCommit = true
+[format]
+	pretty = oneline

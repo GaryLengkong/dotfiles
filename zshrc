@@ -53,7 +53,7 @@ plugins=(git history-substring-search vim-mode osx)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:~/.local/bin:~/.rvm/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -91,3 +91,26 @@ bindkey '\e[B' history-beginning-search-forward
 eval "$(rbenv init -)"
 export NVM_DIR="$HOME/.nvm"
 . $(brew --prefix nvm)/nvm.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/lengkong/Downloads/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/lengkong/Downloads/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/lengkong/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/lengkong/Downloads/google-cloud-sdk/completion.zsh.inc'
+fi
+
+export P4CONFIG=.p4config
+export P4PORT=perforce.f5net.com:1666
+
+cs() { cd $@ && ls; }
+alias antlr4='java -jar /usr/local/lib/antlr-4.5.3-complete.jar'
+alias rn=react-native
+export ANDROID_HOME=/Users/lengkong/Library/Android/sdk/
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
+alias gbpurge='git branch --merged | grep -Ev "(\*|master|develop|staging)" | xargs -n 1 git branch -d'
+
